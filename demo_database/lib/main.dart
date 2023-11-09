@@ -4,12 +4,12 @@ import 'package:demo_database/model/counter_reader.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp( MyApp(storage: CounterReader(),));
+  runApp(const MyApp(
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.storage});
-  final CounterReader storage;
+  const MyApp({super.key});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -19,15 +19,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  MyHomePage(title: 'Flutter Demo Home Page', storage: storage,),
+      home: const MyHomePage(
+        title: 'Flutter Demo Home Page',
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title,required this.storage});
+  const MyHomePage({super.key, required this.title});
   final String title;
-final CounterReader storage;
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -35,21 +36,23 @@ final CounterReader storage;
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  Future<File> _incrementCounter() async {
+  void _incrementCounter() {
     setState(() {
       _counter++;
+      CounterReader.writeCounter(_counter.toString());
     });
-    return widget.storage.writeCounter(_counter);
   }
-@override
-void initState() {
+
+  @override
+  void initState() {
     super.initState();
-    widget.storage.readCounter().then((value) {
+    CounterReader.readCounter().then((value) {
       setState(() {
-        _counter=value;
+        _counter = int.parse(value) ;
       });
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +78,7 @@ void initState() {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), 
+      ),
     );
   }
 }
