@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class FormLogin extends StatefulWidget {
   FormLogin({super.key});
-  InfoReader info = new InfoReader();
+  InfoReader info = InfoReader();
   @override
   State<FormLogin> createState() => _FormLoginState();
 }
