@@ -22,11 +22,16 @@ class Dictionary {
     Map<String, dynamic> lst = jsonDecode(data);
     List<String> keys = lst.keys.toList();
     for (String key in keys) {
-      dictionary.add(Dictionary(key, lst[key], false));
       if (count == 19) {
         break;
-      }
+      } else
+        dictionary.add(Dictionary(key, lst[key], false));
+
       count++;
     }
+  }
+
+  static List<Dictionary> searchDic(List<Dictionary> lst, String name) {
+    return dictionary.where((element) => element.tu.contains(name)).toList();
   }
 }

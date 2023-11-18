@@ -32,14 +32,17 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
   //   }
   //   print("Số từ ${_item.length}");
   // }
-  List<Dictionary> _dictionary=List.filled(0,Dictionary("","",false),growable: true);
+  TextEditingController search = TextEditingController();
+  List<Dictionary> _dictionary =
+      List.filled(0, Dictionary("", "", false), growable: true);
   void readJson() async {
     Dictionary.loadData().then((value) {
       setState(() {
-        _dictionary=Dictionary.dictionary;
+        _dictionary = Dictionary.dictionary;
       });
     });
   }
+
   @override
   void initState() {
     super.initState();
@@ -50,8 +53,18 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const TextField(
-          decoration: InputDecoration(labelText: 'Nhập từ khóa bạn muốn tìm....'),
+        title: TextField(
+          controller: search,
+          onChanged: (value) {
+            setState(() {
+              if (value.isEmpty)
+                readJson();
+              else
+                _dictionary = Dictionary.searchDic(_dictionary, value);
+            });
+          },
+          decoration:
+              const InputDecoration(labelText: 'Nhập từ khóa bạn muốn tìm....'),
         ),
         backgroundColor: Colors.blue,
       ),
