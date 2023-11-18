@@ -57,10 +57,11 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
           controller: search,
           onChanged: (value) {
             setState(() {
-              if (value.isEmpty)
+              if (value.isEmpty) {
                 readJson();
-              else
+              } else {
                 _dictionary = Dictionary.searchDic(_dictionary, value);
+              }
             });
           },
           decoration:

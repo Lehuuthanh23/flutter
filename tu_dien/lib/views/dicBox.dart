@@ -37,7 +37,6 @@ class _DicBoxState extends State<DicBox> {
           onPressed: () {
             setState(() {
               dic.stt = !dic.stt;
-              print(dic.stt);
             });
           },
           height: 100,
