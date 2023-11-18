@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 
-class InfoReader {
+class DicReader {
   Future<String> getDictionary() async {
     String s = "";
     try {

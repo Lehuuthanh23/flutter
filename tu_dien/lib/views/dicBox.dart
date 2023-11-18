@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:tu_dien/dictionary.dart';
+import 'package:tu_dien/models/dictionary.dart';
 
 class DicBox extends StatefulWidget {
   DicBox({super.key, required this.item});
