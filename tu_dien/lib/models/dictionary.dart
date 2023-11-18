@@ -24,8 +24,9 @@ class Dictionary {
     for (String key in keys) {
       if (count == 19) {
         break;
-      } else
+      } else {
         dictionary.add(Dictionary(key, lst[key], false));
+      }
 
       count++;
     }
