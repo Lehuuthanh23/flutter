@@ -62,13 +62,13 @@ class _MyHomePageState extends State<MyHomePage> {
           itemBuilder: (BuildContext context, int index) {
             if (_items.length % 2 != 0 && index == count - 1) {
               return Row(
-                children: [Item(pro: Product.fromJson(_items[index * 2]))],
+                children: [Item(pro: Product.fromJson(_items[index * 2]), items: _items,)],
               );
             } else {
               return Row(
                 children: [
-                  Item(pro: Product.fromJson(_items[index * 2])),
-                  Item(pro: Product.fromJson(_items[index * 2 + 1]))
+                  Item(pro: Product.fromJson(_items[index * 2]), items: _items,),
+                  Item(pro: Product.fromJson(_items[index * 2 + 1]), items: _items,)
                 ],
               );
             }

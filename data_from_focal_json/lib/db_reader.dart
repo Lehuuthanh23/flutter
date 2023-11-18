@@ -15,13 +15,4 @@ class InfoReader {
       return e.toString();
     }
   }
-  Future<String> getCart() async {
-    String s = "";
-    try {
-      s = await rootBundle.loadString("data/cart.json");
-      return s;
-    } catch (e) {
-      return e.toString();
-    }
-  }
 }

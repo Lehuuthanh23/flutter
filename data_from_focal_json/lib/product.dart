@@ -26,9 +26,9 @@ class Product {
       products.add(Product.fromJson(entry));
     }
   }
-  static GetId(List<Product> products, int id) {
+  static GetId(List products, int id) {
     for (var item in products) {
-      if (item.id == id) {
+      if (Product.fromJson(item).id == id) {
         return item;
       }
     }
